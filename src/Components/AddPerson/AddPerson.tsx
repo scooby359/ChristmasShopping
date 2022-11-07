@@ -3,6 +3,7 @@ import './AddPerson.scss';
 import { useState } from 'react';
 import { getDefaultPerson } from '../../Models/Person';
 import Modal from '../Modal/Modal';
+import { db } from '../../Services/db';
 
 interface AddPersonProps {
   onClose: () => void;
@@ -12,11 +13,18 @@ const AddPerson: React.FC<AddPersonProps> = (props) => {
   const [name, setName] = useState('');
   const [isOpen, setIsOpen] = useState(true);
 
-  const onCreate = () => {
+  const onCreate = async() => {
     const person = getDefaultPerson();
     person.name = name; 
     // TODO - repo add
-    onClose();
+    try {
+      console.log('AddPerson - onCreate - person', person);
+      const id = await db.persons.add(person);
+      console.log('Added person with id: ' + id);
+      onClose();
+    } catch (error) {
+      console.log('something went wrong!', error)
+    }
   };
 
   const onClose = () => {
