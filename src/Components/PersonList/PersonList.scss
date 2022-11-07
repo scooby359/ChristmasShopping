@@ -1,0 +1,11 @@
+.personlist {
+  display: flex;
+  flex-direction: column;
+}
+
+.personlist-fab {
+  position: absolute !important;
+  margin: 2rem !important;
+  bottom: 0;
+  right: 0;
+}

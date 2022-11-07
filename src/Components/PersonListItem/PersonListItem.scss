@@ -1,0 +1,13 @@
+.person {
+  border: 1px solid #000;
+  border-radius: 5px;
+
+  .person__name {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .person__totalSpent, .person__isDone {
+    font-size: 1.2rem;
+  }
+}
