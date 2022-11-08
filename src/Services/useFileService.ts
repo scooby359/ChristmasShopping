@@ -31,20 +31,6 @@ export const useFileService = () => {
     );
   };
 
-  const parseJsonFile = async (
-    file: File,
-    successCallBack: (data: Person[]) => void
-  ) => {
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      const data = JSON.parse((e?.target?.result as string) ?? '');
-      successCallBack(data);
-    };
-
-    reader.readAsText(file);
-  };
-
   const getTimeDateFileString = () => {
     const date = new Date();
     const value =

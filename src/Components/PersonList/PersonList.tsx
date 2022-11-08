@@ -2,7 +2,7 @@ import { Fab } from '@mui/material';
 import PersonListItem from '../PersonListItem/PersonListItem';
 import AddIcon from '@mui/icons-material/Add';
 import './PersonList.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AddPerson from '../AddPerson/AddPerson';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db } from '../../Services/db';
