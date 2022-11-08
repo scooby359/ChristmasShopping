@@ -1,6 +1,8 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Christmas Shopping",
+  "name": "Christmas Shopping",
+  "description": "A Christmas shopping tracker",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "favicon.ico",
