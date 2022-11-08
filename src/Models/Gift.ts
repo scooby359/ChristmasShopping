@@ -6,7 +6,7 @@ export interface Gift {
   name: string;
   source: string;
   url?: string;
-  price: number;
+  price: string;
   bought: boolean;
 }
 
@@ -16,11 +16,11 @@ export const getDefaultGift = (): Gift => {
     name: '',
     source: '',
     url: '',
-    price: 0,
+    price: '',
     bought: false
   }
 }
 
 export const getGiftTotalPrice = (gifts: Gift[]): number => {
-  return gifts.reduce((total, gift) => total + gift.price, 0);
+  return gifts.reduce((total, gift) => total + Number(gift.price), 0);
 }

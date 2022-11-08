@@ -18,9 +18,7 @@ interface PersonListProps {
 
 const PersonList: React.FC<PersonListProps> = (props) => {
   const [showNewModal, setShowNewModal] = useState(false);
-  const persons = useLiveQuery(() => db.persons.toArray());
-
-  useEffect(() => {console.log(persons)}, [persons]);
+  const persons = useLiveQuery(() => db.persons.toArray())?.filter(p => props.state === PersonListState.All || !p.done) ?? [];
 
   return (
     <div className='personlist'>

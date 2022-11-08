@@ -1,4 +1,7 @@
+import { Card, CardContent, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { Person } from '../../Models/Person';
+import './PersonListItem.scss';
 
 interface PersonListItemProps {
   person: Person;
@@ -6,15 +9,28 @@ interface PersonListItemProps {
 
 const PersonListItem: React.FC<PersonListItemProps> = (props) => {
 
-  const totalSpent = props.person.gifts.reduce((total, gift) => total + gift.price, 0);
+  const navigate = useNavigate();
 
-  return(
-  <div className='person'>
-    <div className='person__name'>{props.person.name}</div>
-    <div className='person__totalSpent'>Total Spent: {totalSpent}</div>
-    <div className='person__isDone'>Is done: {props.person.done ? 'Done' : 'Not Done'}</div>
-  </div>
-);
-}
+  const totalSpent = props.person.gifts.reduce(
+    (total, gift) => total + Number(gift.price),
+    0
+  );
+
+  return (
+    <Card sx={{m: 1}} onClick={() => navigate(`/person/${props.person.id}`)}>
+      <CardContent>
+        <Typography variant='h5' component='div'>
+          {props.person.name}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color='text.secondary'>
+          £{totalSpent.toFixed(2)}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color={props.person.done ? 'green' : 'red'}>
+          {props.person.done ? 'Done' : 'Still to do'}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};
 
 export default PersonListItem;

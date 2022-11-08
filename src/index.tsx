@@ -10,14 +10,19 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { RouterProvider } from 'react-router-dom';
 import { Routes } from './Routes/Routes';
+import { createTheme, ThemeProvider } from '@mui/material';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+const theme = createTheme();
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={Routes} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={Routes} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
